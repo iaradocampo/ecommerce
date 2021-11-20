@@ -13,7 +13,7 @@ function Item ({id, title, precio, imagen}){
                 <Body>
                     <Title>{title}</Title>
                     <Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex, similique harum? Natus nesciunt illo amet laborum odio placeat suscipit ea.</Text>
-                    <p>${precio}</p>
+                    <p className="precio">${precio}</p>
                 </Body>
                 <Button vartiant="dark">Ver más</Button>
             </Card>
