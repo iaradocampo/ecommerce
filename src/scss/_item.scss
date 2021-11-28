@@ -1,28 +1,99 @@
-.h5{
+.h5 {
+    margin-top: 1rem;
     font-size: 1.3em;
 }
 
-.precio{
+.precio {
     font-size: 1.6em;
 }
 
-.card{
-    margin-bottom: 2rem;
+.item-container {
+    margin-top: 10rem;
 }
 
-.card-body{
+.card {
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 43rem;
+    width: 26rem;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-img {
+    margin-top: 3rem;
+    height: 400px;
+    object-fit: cover;
+}
+
+.card-body {
     text-align: center;
     padding: 3rem 0;
 }
 
-.btn{
-    background-color: black;
+.card:hover .content .btn {
+    top: 0;
+    opacity: 1;
+}
+
+.btn {
+    display: inline-block;
+    position: relative;
+    margin-top: -2rem;
+    padding: 10px 30px;
+    border-radius: 10rem;
     border-color: transparent;
-    height: 3rem;
+    color: #00dbafda;
+    text-transform: uppercase;
     font-size: 1.2em;
-    &:hover{
-        background-color: #A3EEFB;
-        color: black;
+    letter-spacing: .15rem;
+    transition: 0.5s;
+    opacity: 0;
+    top: 100px;
+    overflow: hidden;
+    background-color: #361d64;
+    z-index: 1;
+    height: 3rem;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: #00dbafda !important;
+        transition: all .3s;
+        z-index: -1;
+        border-color: #00dbafda;
+    }
+
+    &:hover {
+        color: #361d64;
         border-color: transparent;
+        background-color: transparent;
+
+        &:before {
+            width: 100%;
+
+        }
     }
 }

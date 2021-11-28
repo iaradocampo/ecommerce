@@ -25,10 +25,14 @@ function ItemCount ({stock, initial, onAdd}) {
 
     return <>
         <Container>
-            <p>Ejemplo de contador: {contador}</p>
-            <button onClick={aumentar}>sumar</button>
-            <button onClick={decrementar}>quitar</button>
-            <button onClick={add}>agregar</button>
+            <div className="add">
+                <div>
+                    <p className="description">Agregar: {contador}</p>
+                    <button className="btn-sumrest" onClick={aumentar}>+</button>
+                    <button className="btn-sumrest" onClick={decrementar}>-</button>
+                    <button className="add-cart" onClick={add}>ADD TO CART</button>
+                </div>
+            </div>
         </Container>
     </>
 }

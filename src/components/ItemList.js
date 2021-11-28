@@ -3,13 +3,15 @@ import Row from 'react-bootstrap/Row';
 
 const ItemList = ({items}) => {
   return (
-    <Row>
-      {items.map(item =>{
-        return(
-            <Item key={item.id} id={item.id} title={item.title} precio={item.precio} imagen={item.imagen}/>
-        )
-      })}
-    </Row>
+    <div className="item-container">
+      <Row>
+        {items.map(prod =>{
+          return(
+              <Item key={prod.id} id={prod.id} category={prod.category} title={prod.title} precio={prod.precio} imagen={prod.imagen}/>
+          )
+        })}
+      </Row>
+    </div>
   )
 }
 

@@ -1,22 +1,25 @@
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
-const {Img, Body, Title, Text} = Card;
+const {Img, Body, Title} = Card;
 
-function Item ({id, title, precio, imagen}){
+const Item = ({id, title, precio, imagen}) => {
     return <>
         <Col sm={6} md={4} lg={4}>
-            <Card>
-                <p>{id}</p>
-                <Img src={imagen}/>
-                <Body>
-                    <Title>{title}</Title>
-                    <Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex, similique harum? Natus nesciunt illo amet laborum odio placeat suscipit ea.</Text>
-                    <p className="precio">${precio}</p>
-                </Body>
-                <Button vartiant="dark">Ver más</Button>
-            </Card>
+                <Card>
+                    <Img src={imagen}/>
+                    <div className="content">
+                        <Body>
+                            <Title>{title}</Title>
+                            <p className="precio">${precio}</p>
+                        </Body>
+                        <Link to={`/detalle/${id}`}>
+                            <Button vartiant="dark">Ver más</Button>
+                        </Link>
+                    </div>
+                </Card>
         </Col>
     </>
 }

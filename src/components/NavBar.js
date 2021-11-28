@@ -1,19 +1,46 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import CartWidget from "./CartWidget";
+import { Link } from 'react-router-dom';
 
-const {Brand, Toggle, Collapse} = Navbar;
-
-const NavBar = () =>{
+const NavBar = () => {
+    
     return <>
-        <Navbar bg="dark" expand="lg" variant="dark">
+        <Navbar expand="lg" fixed="top" >
             <Container>
-                <Navbar.Brand href="#home">Ecommerce</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+                <Link className="a-brand" to='/'>
+                    <Navbar.Brand>Valkiria</Navbar.Brand>
+                </Link>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
                     <Nav>
-                        <Nav.Link href="#">Quienes somos</Nav.Link>
-                        <Nav.Link href="#">Contacto</Nav.Link>
-                        <Nav.Link href="#">Carrito<CartWidget/></Nav.Link>
+                        <NavDropdown title="Categorías" id="basic-nav-dropdown">
+                            <NavDropdown.Item><Link className="a" to='/categoria/auriculares'>
+                                    Auriculares
+                                </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item><Link className="a" to='/categoria/mouse'>
+                                    Mouse
+                                </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item><Link className="a" to='/categoria/teclado'>
+                                    Teclados
+                                </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item><Link className="a" to='/categoria/camara'>
+                                    Webcams
+                                </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item><Link className="a" to='/categoria/audio'>
+                                    Audio
+                                </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item><Link className="a" to='/categoria/accesorios'>
+                                    Accesorios
+                                </Link>
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link>Contacto</Nav.Link>
+                        <Nav.Link><Link className="a-cart" to='/cart'><CartWidget/></Link></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

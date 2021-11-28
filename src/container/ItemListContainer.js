@@ -1,78 +1,49 @@
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
-import ItemCount from '../components/ItemCount';
 import ItemList from '../components/ItemList';
-import { images } from "../images/Images";
-
-const productos = [
-    {
-        id: 1, 
-        title: "Auriculares GEMINI VSG", 
-        precio: 8000, 
-        imagen: images.auriculares
-    },
-    {   
-        id: 2, 
-        title: "Mouse Aurora VSG", 
-        precio: 4000, 
-        imagen: images.mouse
-    },
-    {
-        id: 3, 
-        title: "Teclado mecánico Yama K550 Redragon", 
-        precio: 8000, 
-        imagen: images.keyboard
-    },
-    {
-        id: 4, 
-        title: "Webcam Logitech G920", 
-        precio: 10000, 
-        imagen: images.webcam
-    },
-    {
-        id: 5, 
-        title: "Parlantes Logitech Z120", 
-        precio: 2300, 
-        imagen: images.parlantes
-    },
-    {
-        id: 6, 
-        title: "Joystick PS5 Dualsense", 
-        precio: 13000, 
-        imagen: images.joystick
-    }
-]
+import getFetch from "../utilities/getFetch";
+import Loader from '../components/Loader';
 
 const ItemListContainer = () => {
 
     const [items, setItems] = useState([]);
 
+    const [loader, setLoader] = useState();
+
+    const { idCategory } = useParams();
+
     useEffect(() =>{
 
-        let promesa = new Promise((res, rej) =>{
-            setTimeout(() =>{
-                res(productos)
-            }, 2000)
+        getFetch.then((res) => {
+            if(idCategory === undefined){
+                setItems(res);
+            }else{
+                setItems(res.filter((res) => res.category === idCategory))
+            }
+            setLoader(true);
         })
 
-        promesa.then(res=>{
-            setItems(res);
-        })
+        .catch((error) => console.log(error))
+        .finally(() =>
+            setTimeout(() => {
+                setLoader(false);
+            }, 1000)
+        );
 
-        .catch(error =>{
-            console.log(error);
-        })
+    }, [idCategory])
 
-    }, [])
+    function load () {
+        return loader ? (
+            <Loader />
+        ) : (<Container>
+                <div className="item-list">
+                    {items.length < 1 ? <Loader /> : <ItemList items={items} />}
+                </div>
+            </Container>)
+    }
         
-    return <>
-        <Container>
-            <ItemCount stock= "5" initial= "1" onAdd= "" />
-            <div className="item-list">
-                <ItemList items={items}/>
-            </div>
-        </Container>
-    </>
+    return load();
 }
 
 export default ItemListContainer;
