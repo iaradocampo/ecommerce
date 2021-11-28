@@ -13,7 +13,7 @@ const ItemDetail = ({item}) =>{
                     </div>
                     <h2>{item.title} - ${item.precio}</h2>
                     <p className="description">{item.description}</p>
-                    <ItemCount stock= "5" initial= "1" onAdd= "" />
+                    <ItemCount stock= "5" initial= "1" onAdd= " " />
                 </div>
             </div>
         </Container>

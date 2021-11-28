@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import ItemListContainer from './container/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/detalle/:idProduct' element={<ItemDetailContainer />} />
         <Route exact path='/cart' element={<Cart />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   </>
 }
