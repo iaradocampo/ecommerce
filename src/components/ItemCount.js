@@ -30,7 +30,7 @@ function ItemCount ({stock, initial, onAdd}) {
                     <p className="description">Agregar: {count}</p>
                     <button className="btn-sumrest" onClick={aumentar}>+</button>
                     <button className="btn-sumrest" onClick={decrementar}>-</button>
-                    <button className="add-cart" onClick={add}>ADD TO CART</button>
+                    <button className="add-cart" onClick={add}>agregar al carrito</button>
                 </div>
             </div>
         </Container>

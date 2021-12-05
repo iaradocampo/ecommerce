@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import ItemCount from '../components/ItemCount';
 import { useCartContext } from '../context/CartContext';
 
@@ -6,6 +8,7 @@ const ItemDetail = ({item}) =>{
 
     const { addProduct } = useCartContext();
 
+    const [input, setInput] = useState('button')
     const onAdd = (cant) =>{
 
         const add = {
@@ -14,6 +17,8 @@ const ItemDetail = ({item}) =>{
         }
     
         addProduct(add);
+
+        setInput('input');
     }
 
     return<>
@@ -25,7 +30,18 @@ const ItemDetail = ({item}) =>{
                     </div>
                     <h2>{item.title} - ${item.precio}</h2>
                     <p className="description">{item.description}</p>
-                    <ItemCount stock= "5" initial={item.stock >= 1 ? 1 : 1} onAdd={onAdd} />
+
+                    {
+                        input === 'button' ?
+                        <ItemCount stock= "5" initial={item.stock >= 1 ? 1 : 1} onAdd={onAdd} />
+                    :
+                        <div className="end-container">
+                            <Link to='/cart'>
+                                <button className="end-shop">terminar compra</button>
+                            </Link>
+                        </div>
+                    }
+                    
                 </div>
             </div>
         </Container>

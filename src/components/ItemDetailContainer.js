@@ -41,6 +41,6 @@ const ItemDetailContainer = () => {
             </>
         </Container>
     );
-  };
+};
 
 export default ItemDetailContainer;

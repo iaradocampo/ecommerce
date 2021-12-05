@@ -24,7 +24,7 @@ h2 {
     font-size: 1.2em;
 }
 
-.img-container{
+.img-container {
     display: flex;
     justify-content: center;
     height: 500px;
@@ -35,13 +35,12 @@ h2 {
     max-height: 600px;
 }
 
-.add{
+.add {
     display: flex;
     justify-content: center;
-    object-fit: cover;
 }
 
-.btn-sumrest{
+.btn-sumrest {
     background-color: #361d64;
     color: #00dbafda;
     border: none;
@@ -53,12 +52,30 @@ h2 {
     text-align: center;
 }
 
-.add-cart{
+.add-cart {
     background-color: #361d64;
     color: #00dbafda;
     border: none;
-    border-radius: 1rem;
-    width: 10rem;
-    height: 3rem;
+    border-radius: 4rem;
+    width: 13rem;
+    height: 3.5rem;
     margin-left: 1rem;
+    text-transform: uppercase;
+}
+
+.end-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.end-shop {
+    background-color: #361d64;
+    color: #00dbafda;
+    border: none;
+    border-radius: 4rem;
+    width: 13rem;
+    height: 3.5rem;
+    margin-left: 1rem;
+    text-transform: uppercase;
 }
