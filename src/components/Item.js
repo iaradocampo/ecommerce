@@ -8,18 +8,20 @@ const {Img, Body, Title} = Card;
 const Item = ({id, title, precio, imagen}) => {
     return <>
         <Col sm={6} md={4} lg={4}>
-                <Card>
+            <Card>
+                <div className="card-img-container">
                     <Img src={imagen}/>
-                    <div className="content">
-                        <Body>
-                            <Title>{title}</Title>
-                            <p className="precio">${precio}</p>
-                        </Body>
-                        <Link to={`/detalle/${id}`}>
-                            <Button vartiant="dark">Ver más</Button>
-                        </Link>
-                    </div>
-                </Card>
+                </div>
+                <div className="content">
+                    <Body>
+                        <Title>{title}</Title>
+                        <p className="precio">${precio}</p>
+                    </Body>
+                    <Link to={`/detalle/${id}`}>
+                        <Button vartiant="dark">caracteristicas</Button>
+                    </Link>
+                </div>
+            </Card>
         </Col>
     </>
 }

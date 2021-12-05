@@ -32,7 +32,12 @@ const ItemDetailContainer = () => {
     return (
         <Container>
             <>
-            {loader ? <Loader/> : <ItemDetail item={item} />}
+            {
+                loader ? 
+                    <Loader/> 
+                : 
+                    <ItemDetail item={item} />
+            }
             </>
         </Container>
     );

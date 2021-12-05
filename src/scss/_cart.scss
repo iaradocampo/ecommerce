@@ -1,11 +1,48 @@
 .cart {
-    height: 60vh;
+    min-height: 100vh;
+    margin-top: 10rem;
 }
 
-h1 {
+.h2 {
+    font-size: 1.6em;
+    color: black;
+    margin-bottom: 5rem;
+}
+
+.h1 {
+    font-size: 1em;
+    color: black;
+    text-align: right;
+}
+
+.container-cart {
+    margin-top: 1rem;
+    height: 30rem;
+    background-color: white;
+    border-radius: 2rem;
+}
+
+.cart-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.cart-price {
+    padding-top: 4rem;
+
+}
+
+.img-container-cart {
     display: flex;
     justify-content: center;
-    margin-top: 15rem;
-    font-size: 2em;
-    color: #00dbafda;
+    align-items: center;
+    width: 450px;
+    height: 450px;
+}
+
+.img-cart {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
 }
