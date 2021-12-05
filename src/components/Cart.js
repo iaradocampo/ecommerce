@@ -12,21 +12,21 @@ function Cart () {
                 
                 <div className="container-cart">  
                     <div className="cart-content">
-                        <div className="img-container">
+                        <div className="img-container-cart">
                             <img className="img-cart" src={item.item.imagen}/>
                         </div>
                         <div className="cart-price">
                             <div>
-                                <h2 className="h2" key={item.item.id}>{item.item.title} - ${item.item.precio}.00</h2>
-                                <p>{item.cantidad} x ${item.item.precio * item.cantidad}</p>
+                                <h2 className="h1" key={item.item.id}>{item.item.title} - ${item.item.precio}.00</h2>
+                                <p className="h2">{item.cantidad} x ${item.item.precio * item.cantidad}</p>
                             </div>
                         </div>
                     </div>  
                 </div>)}
                 {cart.length !== 0 && (
-                    <p className="h1">${total}.00</p> 
-                    )}
-                <button onClick={ () => emptyCart()}>vaciar carrito</button>
+                    <p className="p-cart">total: ${total}.00</p> 
+                )}
+                <button className="btn-cart" onClick={ () => emptyCart()}>vaciar carrito</button>
             </Container>
         </div>
     </>
