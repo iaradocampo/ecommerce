@@ -1,8 +1,13 @@
+import Badge from '@mui/material/Badge';
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import CartWidget from "./CartWidget";
 import { Link } from 'react-router-dom';
+import { useCartContext } from "../context/CartContext";
 
-const NavBar = () => {
+
+function NavBar () {
+    
+    const { cart } = useCartContext();
     
     return <>
         <Navbar expand="lg" fixed="top" >
@@ -14,33 +19,44 @@ const NavBar = () => {
                 <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
                     <Nav>
                         <NavDropdown title="Categorías" id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link className="a" to='/categoria/auriculares'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/auriculares'>
                                     Auriculares
                                 </Link>
                             </NavDropdown.Item>
-                            <NavDropdown.Item><Link className="a" to='/categoria/mouse'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/mouse'>
                                     Mouse
                                 </Link>
                             </NavDropdown.Item>
-                            <NavDropdown.Item><Link className="a" to='/categoria/teclado'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/teclado'>
                                     Teclados
                                 </Link>
                             </NavDropdown.Item>
-                            <NavDropdown.Item><Link className="a" to='/categoria/camara'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/camara'>
                                     Webcams
                                 </Link>
                             </NavDropdown.Item>
-                            <NavDropdown.Item><Link className="a" to='/categoria/audio'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/audio'>
                                     Audio
                                 </Link>
                             </NavDropdown.Item>
-                            <NavDropdown.Item><Link className="a" to='/categoria/accesorios'>
+                            <NavDropdown.Item>
+                                <Link className="a" to='/categoria/accesorios'>
                                     Accesorios
                                 </Link>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link>Contacto</Nav.Link>
-                        <Nav.Link><Link className="a-cart" to='/cart'><CartWidget/></Link></Nav.Link>
+                        <Nav.Link>
+                            <Link className="a-cart" to='/cart'>
+                                <Badge badgeContent={cart.length} color="secondary">
+                                    <CartWidget />
+                                </Badge>
+                            </Link>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

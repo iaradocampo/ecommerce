@@ -8,7 +8,8 @@ const ItemDetail = ({item}) =>{
 
     const { addProduct } = useCartContext();
 
-    const [input, setInput] = useState('button')
+    const [input, setInput] = useState('button');
+    
     const onAdd = (cant) =>{
 
         const add = {
