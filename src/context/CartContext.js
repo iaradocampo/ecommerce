@@ -44,7 +44,7 @@ function CartContextProvider ({children}){
         setCart([]);
     }
 
-    const total = cart.reduce((a, b) => a + b.item.precio * b.cantidad, 0);
+    const total = cart.reduce((a, b) => a + b.item.price * b.cantidad, 0);
 
     return(
         <CartContext.Provider value={{cart, addProduct, onRemove, deleteItem, emptyCart, total}}>

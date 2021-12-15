@@ -25,12 +25,12 @@ function NavBar () {
                                 </Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <Link className="a" to='/categoria/mouse'>
-                                    Mouse
+                                <Link className="a" to='/categoria/mouses'>
+                                    Mouses
                                 </Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <Link className="a" to='/categoria/teclado'>
+                                <Link className="a" to='/categoria/teclados'>
                                     Teclados
                                 </Link>
                             </NavDropdown.Item>

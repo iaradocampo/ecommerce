@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import ItemDetail from './ItemDetail';
-import { getFetch } from "../utilities/getFetch";
 import Loader from "./Loader";
+import { dataBase } from "../firebase/firebase";
+
 
 const ItemDetailContainer = () => {
+
     const [item, setItem] = useState([]);
 
     const [loader, setLoader] = useState();
@@ -13,18 +15,21 @@ const ItemDetailContainer = () => {
     const { idProduct } = useParams();
   
     useEffect(() => {
+        console.log(idProduct)
+        const itemQuery = dataBase.collection('items').doc(idProduct);
 
-        getFetch.then((res) => {
-            setItem(res.find((element)=>element.id === parseInt(idProduct)));
-            setLoader(true);
-            })
-
-        .catch((error) => console.log(error))
-        .finally(() =>
+        itemQuery.get()
+        .then((item) => {
+            setItem({
+                id: idProduct, ...item.data(),
+            });
+            
+        })
+        .finally(() => {
             setTimeout(() => {
                 setLoader(false);
             }, 1000)
-        );
+        })
         
     }, [idProduct]);
   

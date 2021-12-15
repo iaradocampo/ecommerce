@@ -27,14 +27,14 @@ const ItemDetail = ({item}) =>{
             <div className="detail-card">
                 <div className="detail">
                     <div className="img-container">
-                        <img className="img-detail" src={item.imagen} alt="producto" />
+                        <img className="img-detail" src={item.image} alt="producto" />
                     </div>
-                    <h2>{item.title} - ${item.precio}</h2>
+                    <h2>{item.title} - ${item.price}</h2>
                     <p className="description">{item.description}</p>
 
                     {
                         input === 'button' ?
-                        <ItemCount stock= "5" initial={item.stock >= 1 ? 1 : 1} onAdd={onAdd} />
+                        <ItemCount stock={item.stock} initial={item.stock >= 1 ? 1 : 1} onAdd={onAdd} />
                     :
                         <div className="end-container">
                             <Link to='/cart'>

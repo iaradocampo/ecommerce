@@ -21,12 +21,12 @@ function Cart () {
                 <div className="container-cart">  
                     <div className="cart-content">
                         <div className="img-container-cart">
-                            <img className="img-cart" src={item.item.imagen}/>
+                            <img className="img-cart" src={item.item.image}/>
                         </div>
                         <div className="cart-price">
                             <div>
-                                <h2 className="h1" key={item.item.id}>{item.item.title} - ${item.item.precio}.00</h2>
-                                <p className="h2">{item.cantidad} x ${item.item.precio * item.cantidad}</p>
+                                <h2 className="h1" key={item.item.id}>{item.item.title} - ${item.item.price}.00</h2>
+                                <p className="h2">{item.cantidad} x ${item.item.price * item.cantidad}</p>
                                 <button onClick={ () => addProduct(item) }>Agregar</button>
                                 <button onClick={ () => onRemove(item) }>Eliminar</button>
                                 <button onClick={ () => deleteItem(item.item.id) }>eliminar item</button>

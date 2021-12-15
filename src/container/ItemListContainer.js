@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import ItemList from '../components/ItemList';
-import getFetch from "../utilities/getFetch";
 import Loader from '../components/Loader';
+import { dataBase } from "../firebase/firebase";
 
 const ItemListContainer = () => {
 
@@ -15,18 +15,28 @@ const ItemListContainer = () => {
 
     useEffect(() =>{
 
-        getFetch.then((res) => {
-            if(idCategory === undefined){
-                setItems(res);
-            }else{
-                setItems(res.filter((res) => res.category === idCategory))
-            }
-            setLoader(true);
-        })
+        setLoader(true);
 
-        .catch((error) => console.log(error))
-        .finally(() =>
-            setTimeout(() => {
+        const itemsCollection = dataBase.collection('items');
+
+        let queryItems;
+
+        idCategory === undefined ? 
+            (queryItems = itemsCollection) 
+        : 
+            (queryItems = itemsCollection.where(
+                'category', "==", idCategory)
+            );
+
+        queryItems.get()
+        .then((items) => {
+            setItems(
+                items.docs.map((item) => ({
+                    id: item.id, ...item.data(),
+                }))
+            );
+        })
+        .finally(() => setTimeout(() => {
                 setLoader(false);
             }, 1000)
         );

@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 
 const {Img, Body, Title} = Card;
 
-const Item = ({id, title, precio, imagen}) => {
+const Item = ({id, title, price, image}) => {
     return <>
         <Col sm={6} md={4} lg={4}>
             <Card>
                 <div className="card-img-container">
-                    <Img src={imagen}/>
+                    <Img src={image}/>
                 </div>
                 <div className="content">
                     <Body>
                         <Title>{title}</Title>
-                        <p className="precio">${precio}</p>
+                        <p className="precio">${price}</p>
                     </Body>
                     <Link to={`/detalle/${id}`}>
                         <Button vartiant="dark">caracteristicas</Button>
