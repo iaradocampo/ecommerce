@@ -46,11 +46,15 @@ const ItemListContainer = () => {
     function load () {
         return loader ? (
             <Loader />
-        ) : (<Container>
+        ) 
+        : 
+        (
+            <Container>
                 <div className="item-list">
                     {items.length < 1 ? <Loader /> : <ItemList items={items} />}
                 </div>
-            </Container>)
+            </Container>
+        )
     }
         
     return load();

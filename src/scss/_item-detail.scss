@@ -1,43 +1,32 @@
-.detail-card {
-    display: flex;
-    justify-content: center;
-    margin-top: 10rem;
-}
-
 .detail {
-    background-color: white;
+    margin-top: 8rem;
     height: 47rem;
-    width: 50rem;
     border-radius: 1rem;
 }
 
 h2 {
-    color: black;
+    color: #00dbafda;
     font-size: 2em;
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
 }
 
 .description {
-    text-align: center;
-    color: black;
+    text-align: left;
+    color: #00dbafda;
     font-size: 1.2em;
 }
 
-.img-container {
-    display: flex;
-    justify-content: center;
-    height: 500px;
-}
-
 .img-detail {
-    max-width: 700px;
-    max-height: 600px;
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    object-fit: cover;
 }
 
-.add {
+.i {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .btn-sumrest {

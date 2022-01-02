@@ -1,5 +1,5 @@
+import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
-import Container from 'react-bootstrap/Container';
 
 function ItemCount ({stock, initial, onAdd}) {
 
@@ -24,16 +24,48 @@ function ItemCount ({stock, initial, onAdd}) {
     }
 
     return <>
-        <Container>
-            <div className="add">
-                <div>
-                    <p className="description">Agregar: {count}</p>
-                    <button className="btn-sumrest" onClick={aumentar}>+</button>
-                    <button className="btn-sumrest" onClick={decrementar}>-</button>
-                    <button className="add-cart" onClick={add}>agregar al carrito</button>
-                </div>
-            </div>
-        </Container>
+        <div className="i">
+            <ButtonGroup style={{boxShadow: "none"}} variant="contained" aria-label="outlined primary button group">
+            <Button onClick={decrementar} 
+                    style={{
+                        width: "4rem",
+                        height: "3rem",
+                        fontSize: "1.6em",
+                        backgroundColor: "#361d64", 
+                        color: "#00dbafda", 
+                        border: "none"
+                    }}>
+                    -
+                </Button>
+                <input readonly="readonly" value={count}/>
+                <Button onClick={aumentar} 
+                    style={{
+                        width: "4rem",
+                        height: "3rem",
+                        fontSize: "1.6em",
+                        backgroundColor: "#361d64", 
+                        color: "#00dbafda", 
+                        border: "none"
+                    }}>
+                    +
+                </Button>
+            </ButtonGroup>
+            <Button onClick={add}
+                style={{
+                    color: "#00dbafda", 
+                    fontWeight: "600",
+                    letterSpacing: "1px",
+                    border: "1px solid #00dbafda", 
+                    '&:hover':{
+                        backgroundColor: "rgba(6, 190, 161, 0.04)"
+                    },
+                    width: "20rem",
+                    height: "3rem", 
+                    marginTop: "3rem"
+                }}>
+                agregar al carrito
+            </Button>
+        </div>
     </>
 }
 

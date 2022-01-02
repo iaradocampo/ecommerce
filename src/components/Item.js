@@ -7,10 +7,12 @@ const {Img, Body, Title} = Card;
 
 const Item = ({id, title, price, image}) => {
     return <>
-        <Col sm={6} md={4} lg={4}>
+        <Col sm={12} md={6} lg={4}>
             <Card>
                 <div className="card-img-container">
+                    <div>
                     <Img src={image}/>
+                    </div>
                 </div>
                 <div className="content">
                     <Body>
@@ -18,7 +20,7 @@ const Item = ({id, title, price, image}) => {
                         <p className="precio">${price}</p>
                     </Body>
                     <Link to={`/detalle/${id}`}>
-                        <Button vartiant="dark">caracteristicas</Button>
+                        <button className='btn'>ver detalle</button>
                     </Link>
                 </div>
             </Card>

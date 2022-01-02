@@ -13,15 +13,3 @@ let firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 
 export const dataBase = app.firestore();
-
-// const fb = firebase.initializeApp(firebaseConfig);
-
-// export const dataBase = fb.firestore();
-
-// export function getFirebase() {
-//     return app; 
-// }
-
-// export function getFirestore() {
-//     return firebase.firestore(app);
-// }

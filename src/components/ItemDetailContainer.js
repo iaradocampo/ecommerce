@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
     const { idProduct } = useParams();
   
     useEffect(() => {
-        console.log(idProduct)
+
         const itemQuery = dataBase.collection('items').doc(idProduct);
 
         itemQuery.get()

@@ -1,5 +1,5 @@
 .h5 {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 1.3em;
 }
 
@@ -14,9 +14,8 @@
 .card {
     margin-bottom: 2rem;
     border-radius: 1rem;
-    overflow: hidden;
-    height: 40rem;
-    width: 26rem;
+    height: 35rem;
+    width: 100%;
 }
 
 .content {
@@ -30,20 +29,19 @@
 .card-img-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 300px;
 }
 
 .card-img {
-    margin-top: 3rem;
-    height: 350px;
+    margin-top: 2rem;
+    height: 300px;
     object-fit: cover;
 }
 
 .card-body {
     text-align: center;
-    padding: 3rem 0;
+    padding-top: 2rem;
 }
 
 .card:hover .content .btn {
@@ -54,21 +52,18 @@
 .btn {
     display: inline-block;
     position: relative;
-    margin-top: -2rem;
-    padding: 10px 30px;
-    border-radius: 10rem;
+    border-radius: 5rem;
     border-color: transparent;
     color: #00dbafda;
     text-transform: uppercase;
     font-size: 1.2em;
     letter-spacing: .15rem;
     transition: 0.5s;
-    opacity: 0;
-    top: 100px;
     overflow: hidden;
     background-color: #361d64;
     z-index: 1;
-    height: 3rem;
+    width: 15rem;
+    height: 4rem;
 
     &:after {
         content: '';
@@ -88,7 +83,7 @@
         left: 0;
         width: 0%;
         height: 100%;
-        background-color: #00dbafda !important;
+        background-color: #00dbafda;
         transition: all .3s;
         z-index: -1;
         border-color: #00dbafda;
