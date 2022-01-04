@@ -1,16 +1,19 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
-import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
-import { Button, ButtonGroup } from "@mui/material";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
+import Form from "./Cart/Form";
+import CartDetail from "./Cart/CartDetail";
+import { Button } from "@mui/material";
 
 function Cart () {
 
-    const { cart, addProduct, onRemove, deleteItem, emptyCart, total } = useCartContext();
+    const { cart, emptyCart, total } = useCartContext();
 
     const [loader, setLoader] = useState(true);
+
+    const [finishShop, setFinishShop] = useState(false);
 
     useEffect(() => {
 
@@ -23,12 +26,19 @@ function Cart () {
         }, 1000);
 
     }, []);
+
+    const shopping = () => {
+        setFinishShop(true);
+    }
     
     return loader ? (
         <Loader />
     )
     : 
     (
+       (finishShop ?
+            <Form />
+        : 
         <div className="cart">
             <Container>
                 <h1>Mi carrito</h1>
@@ -43,59 +53,7 @@ function Cart () {
                     </div>
                 }
                 <Row>
-                    <Col sm={12} md={12} lg={8}>
-                        {cart.map( (item) => 
-                            <div className="container-cart">  
-                                <div className="cart-content">
-                                    <div className="img-container-cart">
-                                        <img className="img-cart" src={item.item.image}/>
-                                    </div>
-                                    <div>
-                                        <h2 className="h2-cart" key={item.item.id}>{item.item.title}</h2>
-                                        <ButtonGroup style={{boxShadow: "none"}} variant="contained" aria-label="outlined primary button group">
-                                            <Button 
-                                                style={{
-                                                    width: "4rem",
-                                                    height: "3rem",
-                                                    fontSize: "1.6em",
-                                                    backgroundColor: "#361d64", 
-                                                    color: "#00dbafda", 
-                                                    border: "none"
-                                                }} 
-                                                onClick={() => addProduct(item)}>
-                                                +
-                                            </Button>
-                                            <input readonly="readonly" value={item.cantidad}/>
-                                            <Button 
-                                                style={{
-                                                    width: "4rem",
-                                                    height: "3rem",
-                                                    fontSize: "1.6em",
-                                                    backgroundColor: "#361d64", 
-                                                    color: "#00dbafda", 
-                                                    border: "none"
-                                                }} 
-                                                onClick={() => onRemove(item)}>
-                                                -
-                                            </Button>
-                                            <h3>${item.item.price}.00</h3>
-                                        </ButtonGroup>
-                                        <Button 
-                                            style={{
-                                                width: "4rem",
-                                                height: "3rem",
-                                                backgroundColor: "#361d64", 
-                                                color: "#00dbafda", 
-                                                border: "none"
-                                            }} 
-                                            onClick={ () => deleteItem(item.item.id) }>
-                                            <DeleteOutlineRoundedIcon />
-                                        </Button>
-                                    </div>
-                                </div>  
-                            </div>
-                        )}
-                    </Col>
+                    <CartDetail />
                     <Col sm={12} md={12} lg={4}>
                         {cart.length !== 0 && (
                             <div className="container-tot">
@@ -104,7 +62,7 @@ function Cart () {
                                     <p className="p-total">${total}.00</p>
                                 </div>
                                 <div className="container-btn">
-                                    <Button variant="contained" 
+                                    <Button onClick={shopping} variant="contained" 
                                         style={{
                                             backgroundColor: "#00dbafda",
                                             color: "#361d64", 
@@ -141,6 +99,7 @@ function Cart () {
                 </Row>
             </Container>
         </div>
+        )
     )
 }
 

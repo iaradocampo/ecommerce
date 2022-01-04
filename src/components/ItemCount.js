@@ -1,5 +1,6 @@
 import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ItemCount ({stock, initial, onAdd}) {
 
@@ -26,7 +27,7 @@ function ItemCount ({stock, initial, onAdd}) {
     return <>
         <div className="i">
             <ButtonGroup style={{boxShadow: "none"}} variant="contained" aria-label="outlined primary button group">
-            <Button onClick={decrementar} 
+                <Button onClick={decrementar} 
                     style={{
                         width: "4rem",
                         height: "3rem",
@@ -50,21 +51,23 @@ function ItemCount ({stock, initial, onAdd}) {
                     +
                 </Button>
             </ButtonGroup>
-            <Button onClick={add}
-                style={{
-                    color: "#00dbafda", 
-                    fontWeight: "600",
-                    letterSpacing: "1px",
-                    border: "1px solid #00dbafda", 
-                    '&:hover':{
-                        backgroundColor: "rgba(6, 190, 161, 0.04)"
-                    },
-                    width: "20rem",
-                    height: "3rem", 
-                    marginTop: "3rem"
-                }}>
-                agregar al carrito
-            </Button>
+            <Link className="a" to='/cart'>
+                <Button onClick={add}
+                    style={{
+                        color: "#00dbafda", 
+                        fontWeight: "600",
+                        letterSpacing: "1px",
+                        border: "1px solid #00dbafda", 
+                        '&:hover':{
+                            backgroundColor: "rgba(6, 190, 161, 0.04)"
+                        },
+                        width: "20rem",
+                        height: "3rem", 
+                        marginTop: "3rem"
+                    }}>
+                    comprar
+                </Button>
+            </Link>
         </div>
     </>
 }

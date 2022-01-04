@@ -13,7 +13,7 @@ function CartContextProvider ({children}){
         const exist = cart.find( (x) => x.item.id === item.item.id);
 
         if (exist){
-            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, cantidad: exist.cantidad + 1 } : x) 
+            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, cantidad: exist.cantidad + item.cantidad } : x) 
             );
         }else {
 
@@ -35,9 +35,9 @@ function CartContextProvider ({children}){
 
     const deleteItem = (id) => {
         
-        const hola = cart.filter( (i) => i.item.id !== id);
+        const existId = cart.filter( (x) => x.item.id !== id);
 
-        setCart(hola);
+        setCart(existId);
     }
 
     const emptyCart = () => {
