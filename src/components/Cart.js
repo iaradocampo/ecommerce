@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
-import Form from "./Cart/Form";
+import Checkout from "./Cart/Checkout";
 import CartDetail from "./Cart/CartDetail";
 import { Button } from "@mui/material";
 
@@ -37,7 +37,7 @@ function Cart () {
     : 
     (
        (finishShop ?
-            <Form />
+            <Checkout />
         : 
         <div className="cart">
             <Container>
@@ -59,7 +59,7 @@ function Cart () {
                             <div className="container-tot">
                                 <div className="total">
                                     <p className="p-total">total:</p> 
-                                    <p className="p-total">${total}.00</p>
+                                    <p className="p-total">${total.toFixed(2)}</p>
                                 </div>
                                 <div className="container-btn">
                                     <Button onClick={shopping} variant="contained" 

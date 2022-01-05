@@ -5,7 +5,7 @@ import { useCartContext } from "../../context/CartContext";
 
 const CartDetail = () =>{
 
-    const { cart, addProduct, onRemove, deleteItem } = useCartContext();
+    const { cart, addOneItem, onRemove, deleteItem } = useCartContext();
 
     return<>
         <Col sm={12} md={12} lg={8}>
@@ -27,10 +27,10 @@ const CartDetail = () =>{
                                         color: "#00dbafda", 
                                         border: "none"
                                     }} 
-                                    onClick={() => addProduct(item)}>
-                                    +
+                                    onClick={() => onRemove(item)}>
+                                    -
                                 </Button>
-                                <input readonly="readonly" value={item.cantidad}/>
+                                <input readonly="readonly" value={item.quantity}/>
                                 <Button 
                                     style={{
                                         width: "4rem",
@@ -40,8 +40,8 @@ const CartDetail = () =>{
                                         color: "#00dbafda", 
                                         border: "none"
                                     }} 
-                                    onClick={() => onRemove(item)}>
-                                    -
+                                    onClick={() => addOneItem(item)}>
+                                    +
                                 </Button>
                                 <h3>${item.item.price}.00</h3>
                             </ButtonGroup>

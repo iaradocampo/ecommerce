@@ -7,7 +7,7 @@ import { useCartContext } from "../context/CartContext";
 
 function NavBar () {
     
-    const { cart } = useCartContext();
+    const { itemsOnCart } = useCartContext();
     
     return <>
         <Navbar expand="lg" fixed="top" >
@@ -52,7 +52,7 @@ function NavBar () {
                         </NavDropdown>
                         <Nav.Link>
                             <Link className="a-cart" to='/cart'>
-                                <Badge badgeContent={cart.length} color="secondary">
+                                <Badge badgeContent={itemsOnCart} color="secondary">
                                     <CartWidget />
                                 </Badge>
                             </Link>

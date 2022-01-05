@@ -1,114 +1,142 @@
-import { Container, Modal, Button } from "react-bootstrap";
-import firebase from "firebase";
-import 'firebase/firestore';
-import { dataBase } from "../../firebase/firebase";
-import { useCartContext } from "../../context/CartContext";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import styled, {css} from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Form = () => {
-
-    const [orderId, setOrderId] = useState('');
-
-    const {cart, total, emptyCart} = useCartContext();
-
-    const [show, setShow] = useState(false);
-
-    const [name, updateName] = useState(undefined);
-    const [lastName, updateLastName] = useState(undefined);
-    const [email, updateEmail] = useState(undefined);
-    const [confirmEmail, updateConfirmEmail] = useState(undefined);
-    const [phone, updatePhone] = useState(undefined);
-
-    const close = () => setShow(false);
-
-    const generateOrder = (e) => {
-        e.preventDefault()
-
-        setShow(true);
-        
-        if(cart !== 0 ){
-
-            const order = {
-        
-                date: firebase.firestore.Timestamp.fromDate(new Date()),
-                buyer: {
-                    name: name, 
-                    lastName: lastName, 
-                    email: email,
-                    phone: phone
-                },
-                total: total,
-                items: cart.map(item => {
-                    return{
-                        id: item.item.id,
-                        title: item.item.title,
-                        price: item.item.price
-                    }
-        
-                }),
-        
-            }
-        
-            const db = dataBase;
-        
-            db.collection('orders').add(order)
-            .then(response => successOrder(response))
-            .finally();
-        }else{
-            console.log('no hay productos')
-        }
-
-        
-        const successOrder = (response) => {
-            setOrderId(response.id);
-            emptyCart();
-        }
-
-    }
-
-    const onChange = () =>{
-        updateName(document.getElementById("inputName").value);
-        updateLastName(document.getElementById("inputLastName").value);
-        updatePhone(document.getElementById("inputPhone").value);
-        updateEmail(document.getElementById("inputEmail").value);
-    }
-
-    const handleReset = () => {
-        Array.from(document.querySelectorAll("input")).forEach(
-          input => (input.value = "")
-        );
-        setShow(false);
-      };
-
-    return <>
-        <div className="cart">
-            <Container>
-                <form>
-                    <input id="inputName" onChange={onChange} type="text" name="name" placeholder="ingrese su nombre"/>
-                    <input id="inputLastName" onChange={onChange} type="text" name="name" placeholder="ingrese su apellido"/>
-                    <input id="inputPhone" onChange={onChange} type="text" name="phone" placeholder="ingrese su teléfono"/>
-                    <input id="inputEmail" onChange={onChange} type="email" name="email" placeholder="ingrese su mail"/>
-                </form>
-                <button onClick={generateOrder}>continuar</button>
-
-                <Modal show={show} onHide={close} centered>
-                    <Modal.Header closeButton>
-                    <Modal.Title>tu orden</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>{orderId !== '' && <p>el id de su orden es: {orderId}</p>}</Modal.Body>
-                    <Modal.Footer>
-                        <Link to='/'>
-                            <Button variant="secondary" onClick={handleReset}>
-                                Close
-                            </Button>
-                        </Link>
-                    </Modal.Footer>
-                </Modal>
-
-            </Container>
-        </div>
-    </>
+const colors = {
+    borde: "#00dbafda",
+	error: "#bb2929",
+	exito: "#1ed12d"
 }
 
-export default Form;
+const Formulario = styled.form`
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: 800px){
+        grid-template-columns: 1fr;
+    }
+`;
+
+const Label = styled.label`
+
+    display: block;
+    padding: 10px;
+    min-height: 40px;
+    cursor: pointer;
+    color: #00dbafda;
+    
+    ${props => props.valido === 'false' && css`
+        color: ${colors.error};
+    `}
+
+`;
+
+const GroupInput = styled.div`
+
+    position: relative;
+    z-index: 90;
+
+`;
+
+const Input = styled.input`
+
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+    border: 3px solid transparent;
+    &:focus {
+        border: 3px solid ${colors.borde};
+        outline: none;
+        box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+    }
+    ${props => props.validate === 'true' && css`
+        border: 3px solid transparent;
+    `}
+    ${props => props.validate === 'false' && css`
+        border: 3px solid ${colors.error} !important;
+    `}
+
+`;
+
+const ErrorLegend = styled.p`
+
+    font-size: 12px;
+    margin-bottom: 0;
+    color: ${colors.error};
+    display: none;
+    ${props => props.validate === 'true' && css`
+        display: none;
+    `}
+    ${props => props.validate === 'false' && css`
+        display: block;
+    `}
+
+`;
+
+const IconValidation = styled(FontAwesomeIcon)`
+
+    position: absolute;
+    right: 10px;
+    bottom: 14px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+
+    ${props => props.validate === 'false' && css`
+		opacity: 1;
+		color: ${colors.error};
+	`}
+	${props => props.validate === 'true' && css`
+		opacity: 1;
+		color: ${colors.exito};
+	`}
+
+`;
+
+const ContainerButton = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	grid-column: span 2;
+	@media (max-width: 800px){
+		grid-column: span 1;
+	}
+`;
+
+const SuccessMessage = styled.p`
+
+    font-size: 14px;
+	color: ${colors.exito};
+
+`;
+
+const ErrorMessage = styled.div`
+
+    height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0px 15px;
+	border-radius: 3px;
+	grid-column: span 2;
+	p {
+		margin: 0;
+	} 
+	b {
+		margin-left: 10px;
+	}
+
+`;
+
+export {
+    Formulario,
+    Label,
+    GroupInput,
+    Input,
+    ErrorLegend,
+    IconValidation,
+    ContainerButton,
+    SuccessMessage,
+    ErrorMessage
+}

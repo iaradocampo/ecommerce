@@ -6,13 +6,13 @@ function ItemCount ({stock, initial, onAdd}) {
 
     const [count, setCount] = useState (parseInt(initial));
 
-    const aumentar = () => {
+    const increase = () => {
         if (count < stock) {
             setCount(count + 1);
         }
     }
 
-    const decrementar = () => {
+    const decrease = () => {
         if (count > initial){
             setCount(count - 1);
         }
@@ -27,7 +27,7 @@ function ItemCount ({stock, initial, onAdd}) {
     return <>
         <div className="i">
             <ButtonGroup style={{boxShadow: "none"}} variant="contained" aria-label="outlined primary button group">
-                <Button onClick={decrementar} 
+                <Button onClick={decrease} 
                     style={{
                         width: "4rem",
                         height: "3rem",
@@ -39,7 +39,7 @@ function ItemCount ({stock, initial, onAdd}) {
                     -
                 </Button>
                 <input readonly="readonly" value={count}/>
-                <Button onClick={aumentar} 
+                <Button onClick={increase} 
                     style={{
                         width: "4rem",
                         height: "3rem",

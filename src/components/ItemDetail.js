@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Button } from "@mui/material";
-import { Link } from 'react-router-dom';
 import ItemCount from '../components/ItemCount';
 import { useCartContext } from '../context/CartContext';
 import Loader from './Loader';
 
 const ItemDetail = ({item}) =>{
 
-    const { addProduct } = useCartContext();
+    const { addItem } = useCartContext();
 
     const [loader, setLoader] = useState(true);
 
@@ -28,10 +26,10 @@ const ItemDetail = ({item}) =>{
 
         const add = {
             item : item, 
-            cantidad : cant
+            quantity : cant
         }
     
-        addProduct(add);
+        addItem(add);
     }
 
     return loader ? (

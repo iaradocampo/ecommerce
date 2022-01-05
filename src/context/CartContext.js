@@ -8,16 +8,29 @@ function CartContextProvider ({children}){
 
     const [cart, setCart] = useState([]);
 
-    const addProduct = (item) => {
+    const addItem = (item) => {
 
         const exist = cart.find( (x) => x.item.id === item.item.id);
 
         if (exist){
-            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, cantidad: exist.cantidad + item.cantidad } : x) 
+            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, quantity: exist.quantity + item.quantity } : x) 
             );
         }else {
 
-            setCart( [...cart, { ...item, cantidad: item.cantidad }] );
+            setCart( [...cart, { ...item, quantity: item.quantity }] );
+        }
+    }
+
+    const addOneItem = (item) => {
+
+        const exist = cart.find( (x) => x.item.id === item.item.id);
+
+        if (exist){
+            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, quantity: exist.quantity + 1 } : x) 
+            );
+        }else {
+
+            setCart( [...cart, { ...item, quantity: item.quantity }] );
         }
     }
 
@@ -25,10 +38,11 @@ function CartContextProvider ({children}){
 
         const exist = cart.find( (x) => x.item.id === item.item.id);
 
-        if (exist.cantidad === 1) {
+        if (exist.quantity === 1) {
             setCart(cart.filter( (x) => x.id !== item.item.id));
         } else {
-            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, cantidad: exist.cantidad - 1 } : x)
+
+            setCart(cart.map( (x) => x.item.id === item.item.id ? { ...exist, quantity: exist.quantity - 1 } : x)
             );
         }
     }
@@ -44,10 +58,12 @@ function CartContextProvider ({children}){
         setCart([]);
     }
 
-    const total = cart.reduce((a, b) => a + b.item.price * b.cantidad, 0);
+    const total = cart.reduce((a, b) => a + b.item.price * b.quantity, 0);
+
+    const itemsOnCart = cart.reduce((a, b) => a + b.quantity, 0);
 
     return(
-        <CartContext.Provider value={{cart, addProduct, onRemove, deleteItem, emptyCart, total}}>
+        <CartContext.Provider value={{cart, addItem, addOneItem, onRemove, deleteItem, emptyCart, total, itemsOnCart}}>
             {children}
         </CartContext.Provider>
     );
