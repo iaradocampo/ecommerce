@@ -46,6 +46,7 @@ const Input = styled.input`
     padding: 0 40px 0 10px;
     transition: .3s ease all;
     border: 3px solid transparent;
+    text-align: left;
     &:focus {
         border: 3px solid ${colors.borde};
         outline: none;

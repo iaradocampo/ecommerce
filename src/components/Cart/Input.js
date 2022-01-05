@@ -1,4 +1,4 @@
-import { Input, Label, GroupInput, ErrorLegend, IconValidation } from "./Form";
+import { Input, Label, GroupInput, ErrorLegend, IconValidation } from "./StyleForm";
 import {faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 
 const InputComponent = ({state, updateState, type, label, placeholder, name, errorLegend, regularExpression, funcion}) => {

@@ -6,10 +6,12 @@ import { useCartContext } from "../../context/CartContext";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from '../Loader';
-import { ErrorMessage, Formulario, ContainerButton } from "./Form";
+import { ErrorMessage, Formulario, ContainerButton } from "./StyleForm";
 import { Button } from "@mui/material";
-import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import Input from './Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
 
 const Checkout = () => {
 
@@ -26,6 +28,7 @@ const Checkout = () => {
     const [email, updateEmail] = useState({field: '', validate: null});
     const [confirmEmail, updateConfirmEmail] = useState({field: '', validate: null});
     const [formValid, updateFormValid] = useState(null);
+
 
     useEffect(() => {
 
@@ -59,8 +62,10 @@ const Checkout = () => {
         }
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const close = () => setShow(false);
+
+    const generateOrder = (e) => {
+        e.preventDefault()
 
         if(
             name.validate === 'true' &&
@@ -74,18 +79,11 @@ const Checkout = () => {
             updatePhone({field: '', validate: null});
             updateEmail({field: '', validate: null});
             updateConfirmEmail({field: '', validate: null});
+            setShow(true);
 
         } else {
             updateFormValid(false);
         }
-    }
-
-    const close = () => setShow(false);
-
-    const generateOrder = (e) => {
-        e.preventDefault()
-
-        setShow(true);
         
         if(cart !== 0 ){
 
@@ -141,7 +139,7 @@ const Checkout = () => {
                 <h1>Datos personales</h1>
                 <p style={{fontSize: "1em", textTransform: "uppercase", color: "#00dbafda"}}>*por favor complete todos los campos para finalizar su compra</p>
 
-                <Formulario action="" onSubmit={onSubmit}>
+                <Formulario action="">
                     <Input 
                         state={name}
                         updateState={updateName}
@@ -182,18 +180,18 @@ const Checkout = () => {
                         label="Repetir Email"
                         placeholder="angus@mail.com"
                         name="email"
-                        errorLegend="El email solo puede contener letras, numeros, puntos, guiones y guion bajo."
+                        errorLegend="El email debe coincidir."
                         funcion={validateEmail}
                     />
 
                     {formValid === false && <ErrorMessage>
                         <p>
-                            <HighlightOffRoundedIcon/>
+                        <FontAwesomeIcon icon={faExclamationTriangle}/>
                             <b>error:</b>por favor rellena el formulario correctamente.
                         </p>
                         </ErrorMessage>} 
                         <ContainerButton>
-                            <Button onClick={generateOrder} variant="outlined" 
+                            <Button type="submit" variant="outlined" onClick={generateOrder}
                                 style={{
                                     color: "#00dbafda", 
                                     fontWeight: "600",
@@ -218,8 +216,19 @@ const Checkout = () => {
                     </Modal.Body>
                     <Modal.Footer>
                         <p>Se le enviara un mail con su número de pedido</p>
-                        <Link to='/'>
-                            <Button variant="secondary" onClick={clean}>
+                        <Link className="a" to='/'>
+                            <Button onClick={clean}
+                            style={{
+                                backgroundColor: "#361d64",
+                                color: "#00dbafda", 
+                                fontWeight: "600",
+                                letterSpacing: "1px",
+                                hover: "#00dbafda", 
+                                width: "20rem",
+                                height: "3rem", 
+                                marginBottom: "1rem"
+                            }}
+                            >
                                 entendido
                             </Button>
                         </Link>
