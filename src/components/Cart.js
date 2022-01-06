@@ -46,9 +46,23 @@ function Cart () {
                 {cart.length === 0 && 
                     <div>
                         <p className="p-empty">Su carrito esta vacío</p>
-                        <p>Para seguir navegando, navegar por las categorias del sitio, o busque su producto.</p>
-                        <Link to='/'>
-                            <button className="btn-cart">elegir productos</button>
+                        <p className="p-order">Para seguir navegando, navegar por las categorias del sitio, o busque su producto.</p>
+                        <Link className="a" to='/'>
+                        <Button variant="outlined" 
+                                            style={{
+                                                color: "#00dbafda", 
+                                                fontWeight: "600",
+                                                letterSpacing: "1px",
+                                                border: "1px solid #00dbafda", 
+                                                '&:hover':{
+                                                    backgroundColor: "rgba(6, 190, 161, 0.04)"
+                                                },
+                                                width: "20rem",
+                                                height: "3rem", 
+                                                marginTop: "2rem"
+                                            }}>
+                                            elegir productos
+                                        </Button>
                         </Link>
                     </div>
                 }

@@ -117,7 +117,6 @@ const Checkout = () => {
         
         const successOrder = (response) => {
             setOrderId(response.id);
-            emptyCart();
         }
 
     }
@@ -127,6 +126,7 @@ const Checkout = () => {
           input => (input.value = "")
         );
         setShow(false);
+        emptyCart();
       };
 
     return loader ? (
@@ -137,8 +137,7 @@ const Checkout = () => {
         <div className="cart">
             <Container>
                 <h1>Datos personales</h1>
-                <p style={{fontSize: "1em", textTransform: "uppercase", color: "#00dbafda"}}>*por favor complete todos los campos para finalizar su compra</p>
-
+                <p className="p-order">*por favor complete todos los campos para finalizar su compra</p>
                 <Formulario action="">
                     <Input 
                         state={name}
@@ -191,7 +190,7 @@ const Checkout = () => {
                         </p>
                         </ErrorMessage>} 
                         <ContainerButton>
-                            <Button type="submit" variant="outlined" onClick={generateOrder}
+                            <Button variant="outlined" onClick={generateOrder}
                                 style={{
                                     color: "#00dbafda", 
                                     fontWeight: "600",
@@ -216,7 +215,7 @@ const Checkout = () => {
                     </Modal.Body>
                     <Modal.Footer>
                         <p>Se le enviara un mail con su número de pedido</p>
-                        <Link className="a" to='/'>
+                        <Link className="a" to={`/orders/${orderId}`}>
                             <Button onClick={clean}
                             style={{
                                 backgroundColor: "#361d64",

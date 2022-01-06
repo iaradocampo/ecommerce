@@ -51,6 +51,11 @@ function NavBar () {
                             </NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link>
+                            <Link className='a' to='/orders'>
+                            Ordenes
+                            </Link>
+                        </Nav.Link>
+                        <Nav.Link>
                             <Link className="a-cart" to='/cart'>
                                 <Badge badgeContent={itemsOnCart} color="secondary">
                                     <CartWidget />

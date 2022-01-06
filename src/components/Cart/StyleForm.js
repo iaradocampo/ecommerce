@@ -63,7 +63,7 @@ const Input = styled.input`
 
 const ErrorLegend = styled.p`
 
-    font-size: 12px;
+    font-size: 0.9em;
     margin-bottom: 0;
     color: ${colors.error};
     display: none;
@@ -101,16 +101,10 @@ const ContainerButton = styled.div`
 	flex-direction: column;
 	align-items: center;
 	grid-column: span 2;
+    margin-top: 2rem;
 	@media (max-width: 800px){
 		grid-column: span 1;
 	}
-`;
-
-const SuccessMessage = styled.p`
-
-    font-size: 14px;
-	color: ${colors.exito};
-
 `;
 
 const ErrorMessage = styled.div`
@@ -138,6 +132,5 @@ export {
     ErrorLegend,
     IconValidation,
     ContainerButton,
-    SuccessMessage,
     ErrorMessage
 }

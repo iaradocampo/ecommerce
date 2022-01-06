@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ItemListContainer from './container/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
+import Order from './components/Order';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/app.scss';
 
@@ -17,6 +18,8 @@ function App() {
           <Route exact path='/' element={<ItemListContainer />} />
           <Route exact path='/categoria/:idCategory' element={<ItemListContainer />} />
           <Route exact path='/detalle/:idProduct' element={<ItemDetailContainer />} />
+          <Route exact path='/orders' element={<Order />} />
+          <Route exact path='/orders/:orderId' element={<Order />} />
           <Route exact path='/cart' element={<Cart />} />
         </Routes>
         <Footer />
