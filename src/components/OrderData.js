@@ -10,14 +10,17 @@ return <>
     <Container>
         <h1>Mis ordenes</h1>
         <hr/>
-    <div>
+    <div className="container-order">
+        <div>
         <p className="p-empty">Resumen de compra</p>
         <p className="p-compra">item(s):</p>
-        <p className="p-compra">{data.items[0].title}</p>
+        <li className="p-compra">{data.items[0].title}</li>
     <p className="p-compra">cantidad:</p>
-    <p className="p-compra">x{data.items[0].quantity}</p>
+    <li className="p-compra">x{data.items[0].quantity}</li>
+    <div className="total">
 <p className="p-compra">total:</p>
 <p className="p-compra">${data.total}</p>
+</div>
 <Link className="a" to='/'>
 <Button variant="outlined" 
                                             style={{
@@ -34,6 +37,7 @@ return <>
                                             volver
                                         </Button>
                         </Link>
+                        </div>
 </div>
 
     

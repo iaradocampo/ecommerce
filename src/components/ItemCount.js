@@ -52,15 +52,13 @@ function ItemCount ({stock, initial, onAdd}) {
                 </Button>
             </ButtonGroup>
             <Link className="a" to='/cart'>
-                <Button onClick={add}
+                <Button variant="contained"  onClick={add}
                     style={{
-                        color: "#00dbafda", 
+                        backgroundColor: "#00dbafda",
+                        color: "#361d64", 
                         fontWeight: "600",
                         letterSpacing: "1px",
-                        border: "1px solid #00dbafda", 
-                        '&:hover':{
-                            backgroundColor: "rgba(6, 190, 161, 0.04)"
-                        },
+                        hover: "#00dbafda", 
                         width: "20rem",
                         height: "3rem", 
                         marginTop: "3rem"

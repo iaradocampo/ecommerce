@@ -4,7 +4,6 @@ import CartWidget from "./CartWidget";
 import { Link } from 'react-router-dom';
 import { useCartContext } from "../context/CartContext";
 
-
 function NavBar () {
     
     const { itemsOnCart } = useCartContext();
@@ -51,7 +50,7 @@ function NavBar () {
                             </NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link>
-                            <Link className='a' to='/orders'>
+                            <Link className='a-cart' to='/orders'>
                             Ordenes
                             </Link>
                         </Nav.Link>

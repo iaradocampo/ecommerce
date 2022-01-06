@@ -115,6 +115,7 @@ const ErrorMessage = styled.div`
 	padding: 0px 15px;
 	border-radius: 3px;
 	grid-column: span 2;
+    text-transform: uppercase;
 	p {
 		margin: 0;
 	} 

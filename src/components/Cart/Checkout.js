@@ -186,21 +186,19 @@ const Checkout = () => {
                     {formValid === false && <ErrorMessage>
                         <p>
                         <FontAwesomeIcon icon={faExclamationTriangle}/>
-                            <b>error:</b>por favor rellena el formulario correctamente.
+                            <b>error:</b> por favor rellena el formulario correctamente.
                         </p>
                         </ErrorMessage>} 
                         <ContainerButton>
-                            <Button variant="outlined" onClick={generateOrder}
+                            <Button variant="contained" onClick={generateOrder}
                                 style={{
-                                    color: "#00dbafda", 
+                                    backgroundColor: "#00dbafda",
+                                    color: "#361d64", 
                                     fontWeight: "600",
                                     letterSpacing: "1px",
-                                    border: "1px solid #00dbafda", 
-                                    '&:hover':{
-                                        backgroundColor: "rgba(6, 190, 161, 0.04)"
-                                    },
-                                    width: "20rem",
-                                    height: "3rem", 
+                                    hover: "#00dbafda", 
+                                    width: "30rem",
+                                    height: "3rem",
                                 }}>
                                 continuar
                             </Button>
@@ -214,7 +212,8 @@ const Checkout = () => {
                         {orderId !== '' && <p>N° de orden: {orderId}</p>}
                     </Modal.Body>
                     <Modal.Footer>
-                        <p>Se le enviara un mail con su número de pedido</p>
+                        <div className="container-modal">
+                        <p>Se le enviara un mail con el detalle de su pedido</p>
                         <Link className="a" to={`/orders/${orderId}`}>
                             <Button onClick={clean}
                             style={{
@@ -231,6 +230,7 @@ const Checkout = () => {
                                 entendido
                             </Button>
                         </Link>
+                        </div>
                     </Modal.Footer>
                 </Modal>
             </Container>

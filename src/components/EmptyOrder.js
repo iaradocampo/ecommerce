@@ -11,17 +11,15 @@ const EmptyOrder = () =>{
         <p className='p-empty'>No hay ordenes para mostrar</p>
         <p className="p-order">Para seguir navegando, navegar por las categorias del sitio, o busque su producto.</p>
         <Link className='a' to='/'>
-        <Button variant="outlined" 
-                                            style={{
-                                                color: "#00dbafda", 
+        <Button variant="contained" 
+                                              style={{
+                                                backgroundColor: "#00dbafda",
+                                                color: "#361d64", 
                                                 fontWeight: "600",
                                                 letterSpacing: "1px",
-                                                border: "1px solid #00dbafda", 
-                                                '&:hover':{
-                                                    backgroundColor: "rgba(6, 190, 161, 0.04)"
-                                                },
+                                                hover: "#00dbafda", 
                                                 width: "20rem",
-                                                height: "3rem", 
+                                                height: "3rem",
                                                 marginTop: "2rem"
                                             }}>
                                             elegir productos

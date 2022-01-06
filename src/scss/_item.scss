@@ -52,7 +52,7 @@
 .btn {
     display: inline-block;
     position: relative;
-    border-radius: 5rem;
+    border-radius: 8px;
     border-color: transparent;
     color: #00dbafda;
     text-transform: uppercase;
@@ -63,7 +63,7 @@
     background-color: #361d64;
     z-index: 1;
     width: 15rem;
-    height: 4rem;
+    height: 3.5rem;
 
     &:after {
         content: '';

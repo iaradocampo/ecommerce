@@ -11,3 +11,18 @@
     color: #00dbafda;
     margin-bottom: 1.6rem;
 }
+
+.container-modal{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-order{
+    display: flex;
+    justify-content: center;
+    width: 30rem;
+    height: 32rem;
+    background-color: #361d64a1;
+    margin-top: 3rem;
+}
