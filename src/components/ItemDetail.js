@@ -18,7 +18,7 @@ const ItemDetail = ({item}) =>{
 
             setLoader(false);
 
-        }, 1000);
+        }, 2000);
 
     }, []);
     

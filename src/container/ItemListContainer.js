@@ -38,7 +38,7 @@ const ItemListContainer = () => {
         })
         .finally(() => setTimeout(() => {
                 setLoader(false);
-            }, 1000)
+            }, 2000)
         );
 
     }, [idCategory])

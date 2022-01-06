@@ -38,7 +38,7 @@ const Checkout = () => {
 
             setLoader(false);
 
-        }, 1000);
+        }, 2000);
 
     }, []);
 

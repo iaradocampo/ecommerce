@@ -23,7 +23,7 @@ function Cart () {
 
             setLoader(false);
 
-        }, 1000);
+        }, 2000);
 
     }, []);
 

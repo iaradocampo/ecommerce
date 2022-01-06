@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
         .finally(() => {
             setTimeout(() => {
                 setLoader(false);
-            }, 1000)
+            }, 2000)
         })
         
     }, [idProduct]);
