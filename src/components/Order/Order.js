@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { dataBase } from "../firebase/firebase";
+import { dataBase } from "../../firebase/firebase";
 import OrderData from "./OrderData";
-import Loader from "./Loader";
+import Loader from "../Loader";
 import EmptyOrder from './EmptyOrder';
 
 function Order(){
@@ -36,15 +36,14 @@ function Order(){
     return loader ? (
      <Loader />
      
-     )
-     : exists === true ? (
-
-         <OrderData data={orderData}/>
-     )
-     :
-     (
-<EmptyOrder/>
-     )
+    )
+    : exists === true ? (
+        <OrderData data={orderData}/>
+    )
+    :
+    (
+        <EmptyOrder/>
+    )
 }
 
 

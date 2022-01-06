@@ -51,7 +51,7 @@ function NavBar () {
                         </NavDropdown>
                         <Nav.Link>
                             <Link className='a-cart' to='/orders'>
-                            Ordenes
+                                Ordenes
                             </Link>
                         </Nav.Link>
                         <Nav.Link>
