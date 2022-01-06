@@ -20,7 +20,7 @@
 
 [![styled-components](https://img.shields.io/badge/styled--components-%5E5.3.3-purple)](https://styled-components.com/)
 
-## COMANDS
+## COMMANDS
 
 ### Development mode
 
