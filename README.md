@@ -2,7 +2,7 @@
 
 ![demo-pagina](https://user-images.githubusercontent.com/85142033/143733704-a81ef391-50f8-459f-bfca-cfad0e6effeb.gif)
 
-## Available Scripts
+## Frameworks y librerías
 
 In the project directory, you can run:
 
