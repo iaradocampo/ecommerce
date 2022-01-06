@@ -38,7 +38,7 @@ const OrderData = ({data}) => {
                                     width: "20rem",
                                     height: "3rem", 
                                 }}>
-                                volver
+                                finalizar
                             </Button>
                         </Link>
                         </div>
