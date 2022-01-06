@@ -1,10 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import { useEffect, useState } from "react";
-import Loader from "./Loader";
-import Checkout from "./Cart/Checkout";
-import CartDetail from "./Cart/CartDetail";
+import Loader from "../Loader";
+import Checkout from "./form/Checkout";
+import CartDetail from "./CartDetail";
 import { Button } from "@mui/material";
 
 function Cart () {

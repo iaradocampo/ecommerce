@@ -1,6 +1,6 @@
 import Badge from '@mui/material/Badge';
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import CartWidget from "./CartWidget";
+import CartWidget from "./cart/icon/CartWidget";
 import { Link } from 'react-router-dom';
 import { useCartContext } from "../context/CartContext";
 

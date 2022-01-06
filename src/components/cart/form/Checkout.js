@@ -1,12 +1,12 @@
 import { Container, Modal } from "react-bootstrap";
 import firebase from "firebase";
 import 'firebase/firestore';
-import { dataBase } from "../../firebase/firebase";
-import { useCartContext } from "../../context/CartContext";
+import { dataBase } from "../../../firebase/firebase";
+import { useCartContext } from "../../../context/CartContext";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loader from '../Loader';
-import { ErrorMessage, Formulario, ContainerButton } from "./StyleForm";
+import Loader from '../../Loader';
+import { ErrorMessage, Formulario, ContainerButton } from "./stylesForm/StyleForm";
 import { Button } from "@mui/material";
 import Input from './Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
